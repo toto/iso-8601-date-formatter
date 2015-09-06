@@ -7,9 +7,7 @@
 #import <float.h>
 #import <Foundation/Foundation.h>
 #if TARGET_OS_IOS
-#if !TARGET_OS_WATCH
 #	import <UIKit/UIKit.h>
-#endif
 #endif
 #import "ISO8601DateFormatter.h"
 
@@ -101,12 +99,10 @@ bool ISO8601DateFormatter_GlobalCachesAreWarm(void) {
 		useMillisecondPrecision = NO;
 
 #if TARGET_OS_IOS
-#if !TARGET_OS_WATCH
 		[[NSNotificationCenter defaultCenter] addObserver:self
 			selector:@selector(didReceiveMemoryWarning:)
 			name:UIApplicationDidReceiveMemoryWarningNotification
 			object:nil];
-#endif
 #endif
 	}
 	return self;
@@ -114,9 +110,7 @@ bool ISO8601DateFormatter_GlobalCachesAreWarm(void) {
 
 - (void) dealloc {
 #if TARGET_OS_IOS
-#if !TARGET_OS_WATCH	
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
-#endif
 #endif
 
 	[defaultTimeZone release];
