@@ -9,6 +9,11 @@ Pod::Spec.new do |s|
   s.source_files = 'ISO8601DateFormatter.{h,m}'
   s.public_header_files = 'ISO8601DateFormatter.h'
   s.requires_arc = false
+  
+  s.ios.frameworks = "UIKit", "Foundation"
+  s.osx.frameworks = "Foundation"
+  s.watchos.frameworks = "Foundation"
+  
   s.author = {"Peter Hosey" => "boredzo@boredzo.org"}
   s.license = { :type => "MIT", :text => "LICENSE.txt" }
 end
